@@ -1,8 +1,15 @@
 import axios from 'axios';
 
-const API_KEY = 'e5a4ec8daa7da266ba415f86715bf416';
+// IMPORTANT: Get your free API key from https://www.themoviedb.org/settings/api
+// Replace 'YOUR_TMDB_API_KEY_HERE' with your actual API key
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY || 'YOUR_TMDB_API_KEY_HERE';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+
+// Validate API key on load
+if (!API_KEY || API_KEY === 'YOUR_TMDB_API_KEY_HERE') {
+  console.error('⚠️ TMDB API Key is missing! Get yours at: https://www.themoviedb.org/settings/api');
+}
 
 export interface Movie {
   id: number;
